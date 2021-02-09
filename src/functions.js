@@ -1,6 +1,7 @@
+/* eslint-disable space-before-function-paren */
 /*
 
-   Welcome to JS Interation
+   Welcome to JS Iteration
 
    Down below you will find instructions for code to write.
 
@@ -15,6 +16,35 @@
 */
 
 /**
+ * 0.25) Define a function named `whispering` that takes an array of
+ * strings as an argument and returns a new array with all
+ * the words forced to lowercase
+ *
+ * NOTE: You may *not* use the `forEach` or `for` method.
+ *
+ */
+// Code below
+const whispering = words => {
+  return words.map(word => word.toLowerCase())
+}
+
+/*
+ * 0.5) Define a function studentsIndexes() that takes an array of
+ * strings as an argument and returns a new array with each string
+ * suffixed with " is in seat X" where X is the index of the element
+ *
+ * NOTE: You may *not* use the `forEach` or `for` method.
+ *
+ */
+// Code below
+function studentsIndexes(students) {
+  return students.map((student, index) => `${student} is in seat ${index}`)
+}
+
+//*
+//*
+//*
+/**
  * 1) Define a function named `yelling` that takes an array of
  * strings as an argument and returns a new array with all
  * the words forced to uppercase
@@ -24,7 +54,7 @@
  */
 
 const yelling = words => {
-  // Your code here
+  return words.map(m => m.toUpperCase())
 }
 
 /**
@@ -38,6 +68,9 @@ const yelling = words => {
  */
 
 // ...
+function doubleTrouble(numbers) {
+  return numbers.map(m => m * 2)
+}
 
 /*
  * 3) Define a function stringyIndexes() that takes an array of
@@ -48,7 +81,9 @@ const yelling = words => {
  *
  */
 
-// ...
+function stringyIndexes(strings) {
+  return strings.map((m, index) => `${m} is at index ${index}`)
+}
 
 /*
  * 4) Define a function onlyTheEvenSurvive that accepts an array of
@@ -59,6 +94,9 @@ const yelling = words => {
  */
 
 // ...
+const onlyTheEvenSurvive = numbers => {
+  return numbers.filter(num => num % 2 === 0)
+}
 
 /*
  * 5) Define a function onlyTheEvenIndexedSurvive that accepts an array of
@@ -69,6 +107,9 @@ const yelling = words => {
  */
 
 // ...
+const onlyTheEvenIndexedSurvive = numbers => {
+  return numbers.filter((num, index) => index % 2 === 0)
+}
 
 /*
  * 6)  Define a function bestMoviesOfTheYear that accepts an array of
@@ -88,6 +129,11 @@ const yelling = words => {
  */
 
 // ...
+const bestMoviesOfTheYear = (movies, year) => {
+  return movies
+    .filter(movie => movie.year === year && movie.score >= 90)
+    .map(movie => movie.name)
+}
 
 /*
  * 7) Define a function everyoneIsOdd that accepts an array of
@@ -99,6 +145,9 @@ const yelling = words => {
  */
 
 // ...
+function everyoneIsOdd(numbers) {
+  return numbers.every(number => number % 2 !== 0)
+}
 
 /*
  * 8) Define a function findTheNeedle that accepts an array of
@@ -110,6 +159,9 @@ const yelling = words => {
  */
 
 // ...
+function findTheNeedle(strings) {
+  return strings.find(word => word.includes('needle'))
+}
 
 /*
  * 9) Define a function findTheNeedleIndex that accepts an array of
@@ -121,6 +173,9 @@ const yelling = words => {
  */
 
 // ...
+function findTheNeedleIndex(strings) {
+  return strings.findIndex(word => word.includes('needle'))
+}
 
 /*
  *` 10)  Define a function someoneToLove that accepts an array of
@@ -132,6 +187,9 @@ const yelling = words => {
  */
 
 // ...
+function someoneToLove(strings) {
+  return strings.some(word => word.length === 4)
+}
 
 /*
  * 11)  Define a function objectKeys that accepts an object of
@@ -166,9 +224,11 @@ const yelling = words => {
  *
  */
 
-// function objectKeys(objectOfHobbies) {
-//   // Your code here
-// }
+function objectKeys(objectOfHobbies) {
+  return Object.entries(objectOfHobbies).map(
+    ([key, value]) => `${key} - ${value.title}`
+  )
+}
 
 // ...
 
@@ -226,6 +286,26 @@ const compare = (received, expected) => {
 }
 
 const tests = [
+  {
+    methodName: 'whispering',
+    test: () => {
+      const received = whispering(['NOW', 'IS', 'THE', 'TIME'])
+      const expected = ['now', 'is', 'the', 'time']
+
+      return compare(received, expected)
+    }
+  },
+  {
+    methodName: 'studentsIndexes',
+    test: () => {
+      return compare(studentsIndexes(['John', 'Niel', 'Pam', 'Connie']), [
+        'John is in seat 0',
+        'Niel is in seat 1',
+        'Pam is in seat 2',
+        'Connie is in seat 3'
+      ])
+    }
+  },
   {
     methodName: 'yelling',
     test: () => {
